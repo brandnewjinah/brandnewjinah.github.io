@@ -43,6 +43,8 @@ const Container = styled.div`
     align-content: center;
     justify-content: center;
     transition: all 0.4s ease;
+    opacity: ${({ open }) => (open ? 0 : 1)};
+    }
 
     &:before,
     &:after {

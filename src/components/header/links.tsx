@@ -60,7 +60,7 @@ const Container = styled.header`
 
 const Overlay = styled.div`
   @media (max-width: 850px) {
-    background-color: #d8bfd8;
+    background-color: #fff;
     border-radius: 50%;
     width: 200vw;
     height: 200vh;

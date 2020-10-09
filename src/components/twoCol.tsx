@@ -38,7 +38,7 @@ const Details = ({
           </Description>
           {mobile ? (
             <Image>
-              <img src={img} alt={alt} style={{ height: "300px" }} />
+              <img src={img} alt={alt} style={{ maxHeight: "300px" }} />
             </Image>
           ) : (
             <Image>
@@ -50,7 +50,7 @@ const Details = ({
         <Container>
           {mobile ? (
             <Image className="rightImg">
-              <img src={img} alt={alt} style={{ height: "300px" }} />
+              <img src={img} alt={alt} style={{  maxHeight: "300px" }} />
             </Image>
           ) : (
             <Image className="rightImg">

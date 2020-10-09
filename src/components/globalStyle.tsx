@@ -36,25 +36,23 @@ const GlobalStyle = createGlobalStyle`
     h3 {
         font-weight: 500;
         font-size: 2rem;
-        line-height: 1.5rem;
+        line-height: 3.5rem;
     }
     h4 {
         font-weight: 500;
         font-size: 1.5rem;
-        line-height: 1.5rem;
+        line-height: 3rem;
     }
 
     h5 {
         font-weight: 500;
         font-size: 1.35rem;
         line-height: 1.5rem;
-        margin: 1.5em 0;
     }
 
     h6 {
         font-weight: 400;
         font-size: 1.25rem;
-        letter-spacing: 0.05rem;
         line-height: 2rem;
     }
 

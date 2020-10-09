@@ -26,6 +26,7 @@ const Container = styled.div`
   right: 2em;
   z-index: 1;
   display: none;
+  cursor: pointer;
   /* background-color: #00ffff; */
 
   @media (max-width: 850px) {

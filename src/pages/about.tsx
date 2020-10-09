@@ -76,10 +76,10 @@ const Projects = ({ data }) => {
         </p>
       </Container>
       <Section>
-        <h6>Skills</h6>
+        <div style={{paddingLeft: "2em"}}><h6>Skills</h6></div>
         {Skills.map((item, index) =>
           index % 2 ? (
-            <Grid style={{ backgroundColor: "#fafafa" }}>
+            <Grid style={{ backgroundColor: "#fafafa", }}>
               <div>
                 <p>{item.title}</p>
               </div>
@@ -110,7 +110,7 @@ const Container = styled.section`
 `
 const Section = styled.section`
   max-width: 1024px;
-  padding: 2em;
+  padding: 2em 0;
   margin: 0 auto;
 
   h6 {
@@ -124,16 +124,13 @@ const Grid = styled.div`
   padding: 0.5em 0;
 
   div {
-    &:nth-child(1) {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
+  margin-left: 2em;
+  padding-right: 2em;
   }
 
   p {
     font-size: 0.875rem;
+
   }
 
   @media (max-width: 850px) {

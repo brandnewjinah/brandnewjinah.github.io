@@ -15,8 +15,8 @@ const BlogPost = ({ data }) => {
         <SEO title={post.frontmatter.title} description={post.excerpt} />
         <Post>
           <div>
-            <h3>{post.frontmatter.title}</h3>
-            <h6>{post.frontmatter.date}</h6>
+            <Title>{post.frontmatter.title}</Title>
+            <Date>{post.frontmatter.date}</Date>
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
         </Post>
@@ -32,16 +32,53 @@ const Container = styled.div`
 `
 
 const Post = styled.section`
-  h3 {
-    text-align: center;
+
+h4 {
+    margin: 1.5em 0;
+    color: ${colors.black}
+  }
+
+  h5 {
+    margin: 1.5em 0;
+    color: ${colors.black}
   }
 
   h6 {
-    font-size: 1rem;
-    text-align: center;
-    margin: 1em 0 4em;
-    color: ${colors.gray};
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 1em 0;
+    color: ${colors.black}
   }
+
+  ul{
+    margin: 1em 0 2em;
+  }
+
+  ol{
+    margin: 1em 0 2em;
+  }
+
+  a {
+    &:hover img {
+      opacity: 1;
+      }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+`
+
+const Title = styled.h3`
+  text-align: center;
+`
+
+const Date = styled.p`
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 4em;
+  color: ${colors.gray};
 `
 
 export default BlogPost

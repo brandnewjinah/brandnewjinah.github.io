@@ -7,13 +7,14 @@ tags:
   - Forms
 ---
 
-In this post, I'm going to go over how to create a simple form in React.  I'll focus on the client side: creating the basic UI, saving the user-submitted data, and validating the form.
+In this post, I'm going to go over how to create a simple form in React. I'll focus on the client side: creating the basic UI, saving the user-submitted data, and validating the form.
 <br />
 
-##### Understanding the flow
+###### Understanding the flow
+
 ![react_forms_flow.png](./react_forms_flow.png)
 
-**The basic flow**
+###### The basic flow
 
 1. The login/registration page is rendered on the screen
 2. User inputs value into the field
@@ -24,10 +25,11 @@ In this post, I'm going to go over how to create a simple form in React.  I'll f
 
 <br />
 
-##### 1. Creating the basic UI
+###### 1. Creating the basic UI
 
 It will be based on this wireframe,
-<div style="width:500px">
+
+<div style="max-width:500px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
 <img src="./form_reg_login.png" />
 </div>
 
@@ -37,13 +39,13 @@ in this structure
 ├── form
 │   └── div
 │       └── label
-│       └── input		
+│       └── input
 │   └── div
 │       └── label
-│       └── input	
+│       └── input
 │   └── div
 │       └── label
-│       └── input	
+│       └── input
 │   └── button
 ```
 
@@ -54,10 +56,10 @@ Using JSX and [styled-components](https://styled-components.com/), I can transla
 ```jsx
 --Registration.js--
 
-import React from "react";
+import React from "react"
 
 //import styles and assets
-import styled from "styled-components";
+import styled from "styled-components"
 
 const Registration = () => {
   return (
@@ -81,14 +83,14 @@ const Registration = () => {
         <button>Register</button>
       </Form>
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-`;
+`
 
 const Header = styled.header`
   margin: 3em 0;
@@ -96,7 +98,7 @@ const Header = styled.header`
   h1 {
     font-size: 2.5rem;
   }
-`;
+`
 
 const Form = styled.form`
   width: 100%;
@@ -126,10 +128,11 @@ const Form = styled.form`
     margin: 1em 0;
     cursor: pointer;
   }
-`;
+`
 
-export default Registration;
+export default Registration
 ```
+
 <br />
 
 We can extract input fields into a reusable component, and make it controlled.
@@ -137,23 +140,23 @@ We can extract input fields into a reusable component, and make it controlled.
 ```jsx
 --InputField.js--
 
-import React from "react";
+import React from "react"
 
 //import styles and assets
-import styled from "styled-components";
+import styled from "styled-components"
 
 const InputField = ({ label, type, value }) => {
   return (
     <Container>
       <label htmlFor="">{label}</label>
-      <Input type={type} value={value}/>
+      <Input type={type} value={value} />
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   padding-bottom: 1em;
-`;
+`
 
 const Input = styled.input`
   width: 100%;
@@ -162,16 +165,17 @@ const Input = styled.input`
   border-radius: 0.25em;
   padding: 0.75em;
   margin: 0.5em 0;
-`;
+`
 
-export default InputField;
+export default InputField
 ```
+
 <br />
 Import it into the Registration.js file
 
 ```jsx
 --Registration.js--
-import InputField from "../components/InputField";
+import InputField from "../components/InputField"
 
 const Registration = () => {
   return (
@@ -186,17 +190,17 @@ const Registration = () => {
         <button>Register</button>
       </Form>
     </Container>
-  );
-};
-
+  )
+}
 ```
 
 Now the page is rendered on the screen
-<div style="width:480px"><img src="./form_reg_rendered.png" /></div>
+
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;"><img src="./form_reg_rendered.png" /></div>
 
 <br />
 
-##### 2. Saving the user input
+###### 2. Saving the user input
 
 Now when user types in, we need to store the value in the state. The value in the state will be validated, then sent to the server.
 
@@ -207,7 +211,7 @@ const [account, setAccount] = useState({
   name: "",
   username: "",
   password: "",
-});
+})
 ```
 
 <br />
@@ -220,7 +224,7 @@ Sync `InputField` to the state
 <InputField value={account.password} label="Password" type="password" />
 ```
 
-- This is done by adding value attribute to the `input` and assigning it to the state.  Now the value stored in the state is displayed in the input field.  Initially, I set the state to "" so that input field is left blank by default.
+- This is done by adding value attribute to the `input` and assigning it to the state. Now the value stored in the state is displayed in the input field. Initially, I set the state to "" so that input field is left blank by default.
 
 <br />
 
@@ -237,24 +241,25 @@ Whenever user types something, store the value in the state
 <Input type={type} value={value} onChange={handleChange} />
 
 ```
+
 - This is done by calling a function with onChange method from the InputField component.
 - `onChange`, meaning whenever user types something in the input field, call `handleChange`, a function that will update the state.
 
 <br />
 
-Create `handleChange` function 
+Create `handleChange` function
 
 ```jsx
 --Registration.js--
 
-const handleChange = ({ currentTarget: input}) => {
-  const userInput = { ...account };
-  userInput[input.name] = input.value;
-  setAccount(userInput);
-};
+const handleChange = ({ currentTarget: input }) => {
+  const userInput = { ...account }
+  userInput[input.name] = input.value
+  setAccount(userInput)
+}
 ```
 
-This method will listen to the input field's change in value (event), in this case renamed as (input), and update the state. 
+This method will listen to the input field's change in value (event), in this case renamed as (input), and update the state.
 
 - Can't update the state directly, so clone the state first
 - Then set the cloned object to the user input value
@@ -265,13 +270,13 @@ Now the state is updated with user input
 
 <br />
 
-##### 3. Validating user input
+###### 3. Validating user input
 
 When user clicks the Submit button, `onSubmit`, I want to validate the value stored in the state for any client-side errors. Once validated, it will be sent to the server for authentication.
 
 This is how it should look like when there's any error.
 
-<div style="width:300px">
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
 <img src="./form_layout_error.png" />
 </div>
 
@@ -287,20 +292,20 @@ const InputField = ({ error, label, name, type, value, handleChange }) => {
       <Input name={name} type={type} value={value} onChange={handleChange} />
       {error && <Error>{error}</Error>}
     </Container>
-  );
-};
+  )
+}
 ```
 
 <br />
 
-How do I know if there's any error? `onSubmit`, call a method to validate.  If input value doesn't pass the validation, return an error message and store it in the state.  The error message then will be passed down to the InputField component.
+How do I know if there's any error? `onSubmit`, call a method to validate. If input value doesn't pass the validation, return an error message and store it in the state. The error message then will be passed down to the InputField component.
 
 Create a state where you want to store error messages.
 
 ```jsx
 --Registration.js--
 
-const [errors, setErrors] = useState({ });
+const [errors, setErrors] = useState({})
 ```
 
 <br />
@@ -314,16 +319,19 @@ const [errors, setErrors] = useState({ });
 <br />
 
 Create `handleSubmit` method
+
 ```jsx
-const handleSubmit = (event) => {
-  event.preventDefault();
-  const errors = validate();
-  setError(errors);
-  if (errors) return;
+const handleSubmit = event => {
+  event.preventDefault()
+  const errors = validate()
+  setError(errors)
+  if (errors) return
   // call server
-};
+}
 ```
+
 In this method, we will
+
 - Add `preventDefault()` to prevent full page reload on click.
 - Call `validate()` which will check for an errors and return error messages if there's any.
 - If `validate()` returns a message, store it in the state.
@@ -332,24 +340,27 @@ In this method, we will
 <br />
 
 Create `validate()` method
+
 ```jsx
 const validate = () => {
-  const errors = {};
+  const errors = {}
   if (account.name === "") {
-    errors.name = "name is required";
+    errors.name = "name is required"
   }
   if (account.username === "") {
-    errors.username = "username is required";
+    errors.username = "username is required"
   }
   if (account.password === "") {
-    errors.password = "password is required";
+    errors.password = "password is required"
   }
-  return errors;
-};
+  return errors
+}
 ```
+
 <br />
 
 Pass the error message to the InputField component
+
 ```jsx
 <InputField
   error={errors.name}
@@ -362,7 +373,8 @@ Pass the error message to the InputField component
 ```
 
 This is how it's rendered on the screen.
-<div style="width:480px">
+
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
 <img src="./form_reg_errors.png" />
 </div>
 

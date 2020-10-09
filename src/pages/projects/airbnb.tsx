@@ -191,6 +191,10 @@ const Wrapper = styled.div`
   padding: 4em;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 850px) {
+    padding: 2em 0;
+  }
 `
 
 export default Airbnb

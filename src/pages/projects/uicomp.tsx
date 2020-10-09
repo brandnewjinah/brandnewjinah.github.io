@@ -152,6 +152,7 @@ const UIComp = ({ data }) => {
 const Container = styled.div`
   @media (max-width: 850px) {
     padding: 3em 0;
+  }
 `
 
 const Header = styled.header`
@@ -189,7 +190,7 @@ const TextSection = styled.section`
 
 const Section = styled.section`
   /* padding: 0 2em; */
-  margin: 4em 0;
+  margin: 4em 0 0;
   h4 {
     text-align: center;
     margin: 4em 0 3em 0;
@@ -206,6 +207,10 @@ const Wrapper = styled.div`
   padding: 4em;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 850px) {
+    padding: 2em 0;
+  }
 `
 
 export default UIComp

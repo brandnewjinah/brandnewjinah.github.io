@@ -48,6 +48,7 @@ const Container = styled.header`
     position: fixed;
     top: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -61,14 +62,12 @@ const Container = styled.header`
 const Overlay = styled.div`
   @media (max-width: 850px) {
     background-color: #fff;
-    border-radius: 50%;
-    width: 200vw;
+    width: 100%;
     height: 200vh;
     display: flex;
-    flex: none;
     align-items: center;
     justify-content: center;
-
+    z-index: 1;
     transition: all 0.4s ease-in-out;
   }
 `

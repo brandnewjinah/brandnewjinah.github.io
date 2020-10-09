@@ -32,4 +32,7 @@ const Container = styled.div`
 
 const Main = styled.main`
   padding: 5em 0;
+
+  @media (max-width: 850px) {
+    padding: 2em 0;
 `

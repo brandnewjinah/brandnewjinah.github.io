@@ -39,7 +39,7 @@ The reason why I create UI with all error messages visible first is because it's
 
 ###### 2. Enabling password show/hide
 
-The password input is set to <code>type="password"</code> by default. This hides the text input in the field. When **show** button clicked, it changes to `type="text"` and displays the input.
+The password input is set to `type="password"` by default. This hides the text input in the field. When **show** button clicked, it changes to `type="text"` and displays the input.
 
 - Set password input to `type="pasword"`
 - Add show/hide button

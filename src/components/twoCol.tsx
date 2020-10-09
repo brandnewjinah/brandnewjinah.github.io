@@ -97,7 +97,7 @@ const Image = styled.div`
   }
 `
 const Description = styled.div`
-  padding: 40px;
+  padding: 1em;
   /* background-color: #fafafa; */
 
   div {
@@ -125,9 +125,9 @@ const Description = styled.div`
     background-color: #dadada;
   }
 
-  /* @media (max-width: 850px) {
+  @media (max-width: 850px) {
     padding-top: 2em;
-  } */
+  }
 `
 
 export default Details

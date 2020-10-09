@@ -150,7 +150,8 @@ const UIComp = ({ data }) => {
 }
 
 const Container = styled.div`
-  /* margin: 6vw auto; */
+  @media (max-width: 850px) {
+    padding: 3em 0;
 `
 
 const Header = styled.header`

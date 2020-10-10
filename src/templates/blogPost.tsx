@@ -45,9 +45,9 @@ h4 {
 
   h6 {
     font-weight: 600;
-    font-size: 1.125rem;
-    margin: 1em 0;
-    color: ${colors.black}
+    font-size: 1.05rem;
+    margin: 1em 0 0;
+    color: ${colors.darkgray}
   }
 
   ul{

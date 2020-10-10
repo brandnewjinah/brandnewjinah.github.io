@@ -27,3 +27,7 @@ Just like a promise in real life, it commits to do something. When we send an HT
 ###### Regular Expression
 
 Patterns used to match or locate character combinations in strings<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank"> [MDN].</a> It's commonly used to validate input value. For example, <code>/(?=._\d)(?=._[a-z])(?=._[A-Z])(?=._[!@#$%^&*]).{8}/</code>this pattern sees if a string matches any one number<code>\d</code>, a lowercase character<code>[a-z]</code>, an uppercase character<code>[A-Z]</code>, a special character<code>[!@#$%^&*]</code> and at least 8 characters<code>{8}</code>.
+
+###### REST
+
+It stands for **Re**presentational **S**tate **T**ransfer. REST is a convention for building HTTP communications to create, read, update and delete data (CRUD). In HTTP verbs, it's POST, GET, PUT, and DELETE. When you say RESTful, it means it's following the REST conventions.

@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.334c15dd5927e694a5f2.css">code[class*=language-],pre[class*=language-]{background:none;font-family:monospace,Monaco,Andale Mono,Ubuntu Mono;font-size:.925em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.875;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f7f7f7}:not(pre)>code[class*=language-]{padding:.1em;white-space:normal;background:#edf2f7;color:#315659}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.24.67"/><title data-react-helmet="true">Building a simple registration and login form in React | Jinah Lee</title><meta data-react-helmet="true" name="description" content="In this post, I&#x27;m going to go over how to create a simple form in React. I&#x27;ll focus on the client side: creating the basic UI, saving the…"/><meta data-react-helmet="true" property="og:title" content="Building a simple registration and login form in React"/><meta data-react-helmet="true" property="og:description" content="In this post, I&#x27;m going to go over how to create a simple form in React. I&#x27;ll focus on the client side: creating the basic UI, saving the…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="Jinah Lee"/><meta data-react-helmet="true" name="twitter:title" content="Building a simple registration and login form in React"/><meta data-react-helmet="true" name="twitter:description" content="In this post, I&#x27;m going to go over how to create a simple form in React. I&#x27;ll focus on the client side: creating the basic UI, saving the…"/><link rel="icon" href="/favicon-32x32.png?v=489c7b550fd39bb995747c71d37deab1" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=489c7b550fd39bb995747c71d37deab1"/><style data-styled="" data-styled-version="5.2.0">.gqCTE{margin:0 auto;width:100%;}/*!sc*/
+@media (max-width:850px){.gqCTE{position:fixed;top:0;left:0;bottom:0;width:100%;height:100%;overflow:hidden;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}}/*!sc*/
+data-styled.g1[id="links__Container-gftenr-0"]{content:"gqCTE,"}/*!sc*/
+@media (max-width:850px){.crHvpQ{background-color:#fff;width:100%;height:200vh;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;z-index:1;-webkit-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;}}/*!sc*/
+data-styled.g2[id="links__Overlay-gftenr-1"]{content:"crHvpQ,"}/*!sc*/
+.cveFQU{list-style:none;text-align:right;}/*!sc*/
+.cveFQU li{float:none;display:inline-block;}/*!sc*/
+.cveFQU li:nth-child(-n + 2){float:left;margin-right:40px;}/*!sc*/
+.cveFQU li:nth-child(n + 3){margin-left:40px;}/*!sc*/
+@media (max-width:850px){.cveFQU{text-align:center;}.cveFQU li{float:none;display:block;}.cveFQU li:nth-child(-n + 2){float:none;margin:20px 0;}.cveFQU li:nth-child(n + 3){float:none;margin:20px 0;}}/*!sc*/
+data-styled.g3[id="links__Ul-gftenr-2"]{content:"cveFQU,"}/*!sc*/
+.cnMwin{font-size:0.875rem;font-weight:400;color:#8b8b8b;}/*!sc*/
+@media (max-width:850px){.cnMwin{font-size:1.25rem;}}/*!sc*/
+data-styled.g4[id="links__Menu-gftenr-3"]{content:"cnMwin,"}/*!sc*/
+.ezMgaq{width:25px;height:33px;position:absolute;top:0;right:2em;z-index:1;display:none;cursor:pointer;}/*!sc*/
+@media (max-width:850px){.ezMgaq{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;}}/*!sc*/
+.ezMgaq div{width:100%;height:2px;background-color:#000;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:all 0.4s ease;transition:all 0.4s ease;opacity:1;}/*!sc*/
+.ezMgaq:before,.ezMgaq:after{content:"";position:absolute;z-index:1;width:100%;height:2px;background-color:black;-webkit-transition:all 0.4s ease;transition:all 0.4s ease;}/*!sc*/
+.ezMgaq:before{opacity:1;-webkit-transform:rotate(0) translateY(-6px);-ms-transform:rotate(0) translateY(-6px);transform:rotate(0) translateY(-6px);}/*!sc*/
+.ezMgaq:after{opacity:1;-webkit-transform:rotate(0) translateY(6px);-ms-transform:rotate(0) translateY(6px);transform:rotate(0) translateY(6px);}/*!sc*/
+data-styled.g5[id="burger__Container-sc-1r8ek56-0"]{content:"ezMgaq,"}/*!sc*/
+.jmUHyZ{width:100%;max-width:1024px;height:33px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;padding:0 2em;margin:0 auto;}/*!sc*/
+data-styled.g6[id="header__Container-bnmt84-0"]{content:"jmUHyZ,"}/*!sc*/
+.hEMvEM{position:absolute;left:50%;top:5px;content:"";width:200px;margin-left:-100px;}/*!sc*/
+.hEMvEM h6{text-transform:uppercase;font-weight:600;-webkit-letter-spacing:0.125rem;-moz-letter-spacing:0.125rem;-ms-letter-spacing:0.125rem;letter-spacing:0.125rem;text-align:center;}/*!sc*/
+data-styled.g7[id="header__Logo-bnmt84-1"]{content:"hEMvEM,"}/*!sc*/
+.kNdFTp{margin:2em auto 4em;padding:0 2em;max-width:1024px;color:#656565;}/*!sc*/
+.kNdFTp p{font-size:0.75rem;}/*!sc*/
+data-styled.g8[id="footer__Container-s0a1iy-0"]{content:"kNdFTp,"}/*!sc*/
+*{box-sizing:border-box;margin:0;padding:0;}/*!sc*/
+html{width:100%;height:100%;}/*!sc*/
+body{width:100%;height:100%;margin:0;padding:0;background-color:white;color:#3f3f3f;font-family:'Mulish',sans-serif;font-size:1.05rem;line-height:1.875rem;font-weight:400;}/*!sc*/
+h1{font-weight:600;font-size:3.25rem;line-height:2.375rem;}/*!sc*/
+h2{font-weight:500;font-size:2.4rem;line-height:3.4rem;}/*!sc*/
+h3{font-weight:500;font-size:2rem;line-height:3.5rem;}/*!sc*/
+h4{font-weight:500;font-size:1.5rem;line-height:3rem;}/*!sc*/
+h5{font-weight:500;font-size:1.35rem;line-height:1.5rem;}/*!sc*/
+h6{font-weight:400;font-size:1.25rem;line-height:2rem;}/*!sc*/
+ul{list-style-position:inside;text-indent:-20px;}/*!sc*/
+li{margin-left:20px;margin-right:20px;}/*!sc*/
+a{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-text-decoration-skip-ink:auto;text-decoration-skip-ink:auto;color:inherit;cursor:pointer;-webkit-transition:opacity 0.2s ease-in-out;transition:opacity 0.2s ease-in-out;}/*!sc*/
+a:hover,a:focus{outline:0;opacity:0.5;}/*!sc*/
+code{font-size:1.125rem;background-color:#edf2f7;padding:0 .5rem;}/*!sc*/
+data-styled.g9[id="sc-global-hdaIDv1"]{content:"sc-global-hdaIDv1,"}/*!sc*/
+.iKNSvq{width:100%;min-height:100vh;padding-top:3vw;display:grid;grid-template-rows:auto 1fr auto;grid-template-columns:100%;}/*!sc*/
+data-styled.g10[id="layout__Container-sc-1jer9s0-0"]{content:"iKNSvq,"}/*!sc*/
+.iPHtdn{padding:5em 0;}/*!sc*/
+@media (max-width:850px){.iPHtdn{padding:2em 0;}}/*!sc*/
+data-styled.g11[id="layout__Main-sc-1jer9s0-1"]{content:"iPHtdn,"}/*!sc*/
+.edCOJk{max-width:1024px;padding:2em;margin:0 auto;}/*!sc*/
+data-styled.g63[id="blogPost__Container-sc-1edy2wl-0"]{content:"edCOJk,"}/*!sc*/
+.hRtoSO h4{margin:1.5em 0;color:#191919;}/*!sc*/
+.hRtoSO h5{margin:1.5em 0;color:#191919;}/*!sc*/
+.hRtoSO h6{font-weight:600;font-size:1.125rem;margin:1em 0;color:#191919;}/*!sc*/
+.hRtoSO ul{margin:1em 0 2em;}/*!sc*/
+.hRtoSO ol{margin:1em 0 2em;}/*!sc*/
+.hRtoSO a:hover img{opacity:1;}/*!sc*/
+.hRtoSO img{width:100%;height:auto;}/*!sc*/
+data-styled.g64[id="blogPost__Post-sc-1edy2wl-1"]{content:"hRtoSO,"}/*!sc*/
+.hlaFuJ{text-align:center;}/*!sc*/
+data-styled.g65[id="blogPost__Title-sc-1edy2wl-2"]{content:"hlaFuJ,"}/*!sc*/
+.IsotA{font-size:1rem;text-align:center;margin-bottom:4em;color:#656565;}/*!sc*/
+data-styled.g66[id="blogPost__Date-sc-1edy2wl-3"]{content:"IsotA,"}/*!sc*/
+</style><link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700|Mulish:300,400,500,600,700&amp;display=swap" rel="stylesheet"/><link as="script" rel="preload" href="/webpack-runtime-32dd9ec2adb70a789fa1.js"/><link as="script" rel="preload" href="/styles-1043fb1b9b9e69356781.js"/><link as="script" rel="preload" href="/framework-5a1b297d9adac74fe592.js"/><link as="script" rel="preload" href="/app-15711cc9c247110a3e49.js"/><link as="script" rel="preload" href="/commons-32074c982b80189af075.js"/><link as="script" rel="preload" href="/f61f20643a01c6a9f234f7e0d826d7bb7960cf70-7308d9092df04833f07d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-tsx-6dead82e52e659e5f61d.js"/><link as="fetch" rel="preload" href="/page-data/simple-form-react/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3159585216.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/63159454.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="layout__Container-sc-1jer9s0-0 iKNSvq"><header class="header__Container-bnmt84-0 jmUHyZ"><a href="/"><div class="header__Logo-bnmt84-1 hEMvEM"><h6>Jinah Lee</h6></div></a><div class="burger__Container-sc-1r8ek56-0 ezMgaq"><div></div></div><header class="links__Container-gftenr-0 gqCTE"><div class="links__Overlay-gftenr-1 crHvpQ"><ul class="links__Ul-gftenr-2 cveFQU"><li><a href="/blog/"><div class="links__Menu-gftenr-3 cnMwin">Blog</div></a></li><li><a href="/projects/"><div class="links__Menu-gftenr-3 cnMwin">Projects</div></a></li><li><a href="/about/"><div class="links__Menu-gftenr-3 cnMwin">About</div></a></li><li><a href="https://github.com/brandnewjinah" target="_blank"><div class="links__Menu-gftenr-3 cnMwin">Github</div></a></li></ul></div></header></header><main class="layout__Main-sc-1jer9s0-1 iPHtdn"><div class="blogPost__Container-sc-1edy2wl-0 edCOJk"><section class="blogPost__Post-sc-1edy2wl-1 hRtoSO"><div><h3 class="blogPost__Title-sc-1edy2wl-2 hlaFuJ">Building a simple registration and login form in React</h3><p class="blogPost__Date-sc-1edy2wl-3 IsotA">07.28.2020</p><div><p>In this post, I'm going to go over how to create a simple form in React. I'll focus on the client side: creating the basic UI, saving the user-submitted data, and validating the form.
+<br /></p>
+<h6>Understanding the flow</h6>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/bcaeeb03ecbb1c71edd88072752842cf/aa440/react_forms_flow.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 30.405405405405407%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAIAAABM9SnKAAAACXBIWXMAAAsSAAALEgHS3X78AAAAq0lEQVQY03WP0QrCMAxF+/9/5oPvgihD3IubE92aNG2SmrYgG7hA23BvDzdx+V8BhJhS3imKERCtcWqXSlZd25xIeBdW4eY6O6fb43wfrUnMREUdZu5fsYSQTcDFsoe5JYxLvozaYD1cn8duqj8MLsywaP9uE6YGL94TUUueIHdThUUVwCOCqnoPn3lmkUABqoIhGKPbpYhCQBQRZ4aISrWlVlU2Tdlzxf/EL+UyYXXr2u5jAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="react_forms_flow.png"
+        title="react_forms_flow.png"
+        src="/static/bcaeeb03ecbb1c71edd88072752842cf/fcda8/react_forms_flow.png"
+        srcset="/static/bcaeeb03ecbb1c71edd88072752842cf/12f09/react_forms_flow.png 148w,
+/static/bcaeeb03ecbb1c71edd88072752842cf/e4a3f/react_forms_flow.png 295w,
+/static/bcaeeb03ecbb1c71edd88072752842cf/fcda8/react_forms_flow.png 590w,
+/static/bcaeeb03ecbb1c71edd88072752842cf/efc66/react_forms_flow.png 885w,
+/static/bcaeeb03ecbb1c71edd88072752842cf/c83ae/react_forms_flow.png 1180w,
+/static/bcaeeb03ecbb1c71edd88072752842cf/aa440/react_forms_flow.png 1500w"
+        sizes="(max-width: 590px) 100vw, 590px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<h6>The basic flow</h6>
+<ol>
+<li>The login/registration page is rendered on the screen</li>
+<li>User inputs value into the field</li>
+<li>User input value is saved in the state</li>
+<li>User clicks the submit button</li>
+<li>Client side form validation</li>
+<li>Server side authentication</li>
+</ol>
+<br />
+<h6>1. Creating the basic UI</h6>
+<p>It will be based on this wireframe,</p>
+<div style="max-width:500px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; ">
+      <a class="gatsby-resp-image-link" href="/static/2bea058531727a42ae09be13eed9d6b6/081d5/form_reg_login.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 55.4054054054054%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACWElEQVQoz1WSy27TQBSG8xYs2CAkFrAFgcSztUqWvAAqIBYgVYBUECvuaSlpCs09ju9OfKntOI6dpmmgaatJ5ueMU6qw+PXPaM7M+c45k1PscK65A5BzxenDOIxXxeLpBVqmt9403PVocg7NjRiJzoarcbwbpiLuIicWci/gu5U29psqnMEYbnycOYkdn0MkKwiNZgvsN1RWk7s4TCb/YjIdDidcsfvImf6Q694AqtPn4sCOjlbFxmeAbIf5TjfIj2YcLiVx4/F/j5G4N5ygQ2A5K0ggdQNsVxX8aOj4XtOwW9fIVbFn6ekC1Io8BefT0zkamsMky4eoTNy1ghQmuXiYKs0Isz40dJcyhHQ5IqJ+JlqzozOeEQolf+YiEfv6S8J2RUGxImcu9m2CoiqRs8IEbcr4aa+BEhGWWyb2MhnYl6wrQvmSsE6EbSuA4SfQaTA6uUZuRyuEmhejothomj5aFNyiBJdrJvqmCMJemE+JsExDKdVk/GxqVyrXFaiiIjEU0QdqOHYOJFTkniBATbUzCRoxWQrMCBOiLRkx21YjCBWVCDvk3+Q+JG8kEi+nrBDhXsfm5Y6NUruHkrQU7bOSO/Sgbvt574TjwdacXX/Jcfv1Ave2OG5uLnDtBeePqmdwPJ/noniIjdaM39gE7rwBHr4H7r4Fbr0C7r/jzPkN9LywQAMrjOgLFbsn7KM5xWdrii/W0j8YJ2iFU667VLJmB2zHSPD4IOVPKimeVVM8Jd84SPG8mjJvfA7JdNfqurvWP57B8SPmBpHwpWjt+hG3g6H4KRd/Af9h/ihHoIlqAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="form reg login" title="form reg login" src="/static/2bea058531727a42ae09be13eed9d6b6/fcda8/form_reg_login.png" srcset="/static/2bea058531727a42ae09be13eed9d6b6/12f09/form_reg_login.png 148w,
+/static/2bea058531727a42ae09be13eed9d6b6/e4a3f/form_reg_login.png 295w,
+/static/2bea058531727a42ae09be13eed9d6b6/fcda8/form_reg_login.png 590w,
+/static/2bea058531727a42ae09be13eed9d6b6/efc66/form_reg_login.png 885w,
+/static/2bea058531727a42ae09be13eed9d6b6/c83ae/form_reg_login.png 1180w,
+/static/2bea058531727a42ae09be13eed9d6b6/081d5/form_reg_login.png 1264w" sizes="(max-width: 590px) 100vw, 590px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy">
+  </a>
+    </span>
+</div>
+<p>in this structure</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">├── form
+│   └── div
+│       └── label
+│       └── input
+│   └── div
+│       └── label
+│       └── input
+│   └── div
+│       └── label
+│       └── input
+│   └── button</code></pre></div>
+<br />
+<p>Using JSX and <a href="https://styled-components.com/">styled-components</a>, I can translate into React like the following.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token operator">--</span>Registration<span class="token punctuation">.</span>js<span class="token operator">--</span>
+
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span>
+
+<span class="token comment">//import styles and assets</span>
+<span class="token keyword">import</span> styled <span class="token keyword">from</span> <span class="token string">"styled-components"</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Registration</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Header</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Register</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Header</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Form</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">htmlFor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">Name</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>textinput<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">htmlFor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">Username</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>textinput<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-group<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">htmlFor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">Password</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>textinput<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">Register</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Form</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> Container <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token keyword">const</span> Header <span class="token operator">=</span> styled<span class="token punctuation">.</span>header<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  margin: 3em 0;
+
+  h1 {
+    font-size: 2.5rem;
+  }
+</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token keyword">const</span> Form <span class="token operator">=</span> styled<span class="token punctuation">.</span>form<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  width: 100%;
+
+  .form-group {
+    padding-bottom: 1em;
+  }
+
+  .textinput {
+    width: 100%;
+    font-size: 1rem;
+    border: 1px solid #e4e4e4;
+    border-radius: 0.25em;
+    padding: 0.75em;
+    margin: 0.5em 0;
+  }
+
+  button {
+    width: 100%;
+    background-color: #3fccca;
+    border: none;
+    outline: none;
+    border-radius: 0.25em;
+    font-size: 1rem;
+    color: #fff;
+    padding: 1.25em 0;
+    margin: 1em 0;
+    cursor: pointer;
+  }
+</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Registration</code></pre></div>
+<br />
+<p>We can extract input fields into a reusable component, and make it controlled.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token operator">--</span>InputField<span class="token punctuation">.</span>js<span class="token operator">--</span>
+
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span>
+
+<span class="token comment">//import styles and assets</span>
+<span class="token keyword">import</span> styled <span class="token keyword">from</span> <span class="token string">"styled-components"</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">InputField</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> label<span class="token punctuation">,</span> type<span class="token punctuation">,</span> value <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">htmlFor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>label<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input</span></span> <span class="token attr-name">type</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>type<span class="token punctuation">}</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> Container <span class="token operator">=</span> styled<span class="token punctuation">.</span>div<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  padding-bottom: 1em;
+</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token keyword">const</span> Input <span class="token operator">=</span> styled<span class="token punctuation">.</span>input<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid #e4e4e4;
+  border-radius: 0.25em;
+  padding: 0.75em;
+  margin: 0.5em 0;
+</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> InputField</code></pre></div>
+<br />
+Import it into the Registration.js file
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token operator">--</span>Registration<span class="token punctuation">.</span>js<span class="token operator">--</span>
+<span class="token keyword">import</span> InputField <span class="token keyword">from</span> <span class="token string">"../components/InputField"</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Registration</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Header</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Register</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Header</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Form</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Name<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Username<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Password<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">Register</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Form</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Now the page is rendered on the screen</p>
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;"><span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; ">
+      <a class="gatsby-resp-image-link" href="/static/50aacae70235e3e376a271a4cdee1e32/d9199/form_reg_rendered.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 78.37837837837837%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABFElEQVQ4y62TS06EQBCGuYlxq9ETzMpreBlXmjkAO1az4RwTR42PzQhLccJCEx4hgQ4S0gO/XTUDoQ2aEajkI1BNf6miGsP3feR5jiiKmKIoQFHXNfPfMCzLgmmasG0bdO+6Li9UVdVKD4WFdCnLclA1P4McRhAEWmIMXGGWZdxew1BZs9foVtcVD4GFaZpCCMGJMW23Uw7DEHEcQ0qplT5Jy2NohUmSgNoeMxBtynRsSDqFUGt5q4Syh+0eeQCacIpg4ZX3hpvNO643Xi9ztTb/Y532kmPx+bH7hke3S5w93OH0foWTDs3z7PkRFy9POFfvdPMNtPd4tcSls94J1+rXc9TBdkTWy+se51cEyOF95Sz8BgAjxZMc5PbgAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="form reg rendered" title="form reg rendered" src="/static/50aacae70235e3e376a271a4cdee1e32/fcda8/form_reg_rendered.png" srcset="/static/50aacae70235e3e376a271a4cdee1e32/12f09/form_reg_rendered.png 148w,
+/static/50aacae70235e3e376a271a4cdee1e32/e4a3f/form_reg_rendered.png 295w,
+/static/50aacae70235e3e376a271a4cdee1e32/fcda8/form_reg_rendered.png 590w,
+/static/50aacae70235e3e376a271a4cdee1e32/efc66/form_reg_rendered.png 885w,
+/static/50aacae70235e3e376a271a4cdee1e32/d9199/form_reg_rendered.png 960w" sizes="(max-width: 590px) 100vw, 590px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy">
+  </a>
+    </span></div>
+<br />
+<h6>2. Saving the user input</h6>
+<p>Now when user types in, we need to store the value in the state. The value in the state will be validated, then sent to the server.</p>
+<p>First, create the state</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token punctuation">[</span>account<span class="token punctuation">,</span> setAccount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  username<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<br />
+<p>Sync <code class="language-text">InputField</code> to the state</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>account<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Name<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>account<span class="token punctuation">.</span>username<span class="token punctuation">}</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Username<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>account<span class="token punctuation">.</span>password<span class="token punctuation">}</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Password<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre></div>
+<ul>
+<li>This is done by adding value attribute to the <code class="language-text">input</code> and assigning it to the state. Now the value stored in the state is displayed in the input field. Initially, I set the state to "" so that input field is left blank by default.</li>
+</ul>
+<br />
+<p>Whenever user types something, store the value in the state</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token operator">--</span>Registration<span class="token punctuation">.</span>js<span class="token operator">--</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>account<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Name<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">handleChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span></span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>account<span class="token punctuation">.</span>username<span class="token punctuation">}</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Username<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">handleChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span></span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>account<span class="token punctuation">.</span>password<span class="token punctuation">}</span></span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Password<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">handleChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span></span><span class="token punctuation">/></span></span>
+
+<span class="token operator">--</span>InputField<span class="token punctuation">.</span>js<span class="token operator">--</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input</span></span> <span class="token attr-name">type</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>type<span class="token punctuation">}</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span></span> <span class="token attr-name">onChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span></code></pre></div>
+<ul>
+<li>This is done by calling a function with onChange method from the InputField component.</li>
+<li><code class="language-text">onChange</code>, meaning whenever user types something in the input field, call <code class="language-text">handleChange</code>, a function that will update the state.</li>
+</ul>
+<br />
+<p>Create <code class="language-text">handleChange</code> function</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token operator">--</span>Registration<span class="token punctuation">.</span>js<span class="token operator">--</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">handleChange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> currentTarget<span class="token operator">:</span> input <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> userInput <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>account <span class="token punctuation">}</span>
+  userInput<span class="token punctuation">[</span>input<span class="token punctuation">.</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> input<span class="token punctuation">.</span>value
+  <span class="token function">setAccount</span><span class="token punctuation">(</span>userInput<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>This method will listen to the input field's change in value (event), in this case renamed as (input), and update the state.</p>
+<ul>
+<li>Can't update the state directly, so clone the state first</li>
+<li>Then set the cloned object to the user input value</li>
+<li>Instead of <code class="language-text">userInput.username</code> or <code class="language-text">userInput.password</code>, write <code class="language-text">userInput[input.name]</code> so that it can bring the name of the current event.</li>
+<li>Lastly set the original state to the changed object</li>
+</ul>
+<p>Now the state is updated with user input</p>
+<br />
+<h6>3. Validating user input</h6>
+<p>When user clicks the Submit button, <code class="language-text">onSubmit</code>, I want to validate the value stored in the state for any client-side errors. Once validated, it will be sent to the server for authentication.</p>
+<p>This is how it should look like when there's any error.</p>
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; ">
+      <a class="gatsby-resp-image-link" href="/static/714b1361a865396e6f32723b80481512/87254/form_layout_error.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAACc0lEQVQ4y6WUyW7TYBSF/QDseQFegzUSQqiwQmIDSEi8AA+AWMCC8gZsEFsWpUmb0DahTTOTNPHQJB7izLGdoUxV0wrlcK8zkcaWUFl8+u1j/+e/use+QlrSfipmB6LWHIt6E1dkLOktFNXGhcBmdef72LRO8J+Ma/Y3CFwZC0Zn4K4sMtXuEHq7z/q/MJ6tApc8NUShUkNW0pARVShGiyvH5BB/Znu5AGZuyDcZSUckVUQ0LSJZVFHUWjhSGyioTU/4mWS03b2zaueGpjVEXNQRPDxCKCliK15AIHaEYCyP4EHOgzw2v3xFNHsM08uQT0kXKtiJ5RA5zC9IiYhklRWixF5aRlLUvCvkG1NrwFRrMMtVVMUydMKgXhp/bfDC11Axu5CrHUjVNipNB7XeD5iUOLfD93OZmnmGkhYr2EvksRvPISvrUMm0VLNQrtuelAg+2DsUElOygXBCdHsTThSxTQH5EaLQOLD9XMnfME6fSpCSDZEZJx1m6NoPNj7Il316SGJZMSAXylDyx5AzRchZCUrJhNLoQanZUOqXIK3UcPxD6Vh99JweHJuwHPRsB45DWn+Ifn9A6wJnunYdNuJABi6uYZUMm9YALxOnuLVxjvvBc6wFJtwLjHD30wh3iLXNBazfpnef75+ibk1MGdfQ6J7AokpufryA8AoQ3hJvFlx7B1x/v6wJ68Rr4MaH32jZlwy5wgadsp75hQdbIzz5fIZH4QVPd87wbHdZe0zvPNwe4UV8tcL5+OKT7N6Aql2G+9RxVnWbaNuzHg4n44snLQ9HDkWnB5oH+hS/ZzMz90/hsc0DdTIkh7gaEzP6s8Z/AC+hg55Q0GQVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="form layout error" title="form layout error" src="/static/714b1361a865396e6f32723b80481512/fcda8/form_layout_error.png" srcset="/static/714b1361a865396e6f32723b80481512/12f09/form_layout_error.png 148w,
+/static/714b1361a865396e6f32723b80481512/e4a3f/form_layout_error.png 295w,
+/static/714b1361a865396e6f32723b80481512/fcda8/form_layout_error.png 590w,
+/static/714b1361a865396e6f32723b80481512/87254/form_layout_error.png 604w" sizes="(max-width: 590px) 100vw, 590px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy">
+  </a>
+    </span>
+</div>
+<p>In the Input component, decide where to display error message. If there's any error, I want it to show up right below the input field.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token operator">--</span>InputField<span class="token punctuation">.</span>js<span class="token operator">--</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">InputField</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> error<span class="token punctuation">,</span> label<span class="token punctuation">,</span> name<span class="token punctuation">,</span> type<span class="token punctuation">,</span> value<span class="token punctuation">,</span> handleChange <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">htmlFor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>label<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input</span></span> <span class="token attr-name">name</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span> <span class="token attr-name">type</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>type<span class="token punctuation">}</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span></span> <span class="token attr-name">onChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>error <span class="token operator">&amp;&amp;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Error</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>error<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Error</span></span><span class="token punctuation">></span></span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<br />
+<p>How do I know if there's any error? <code class="language-text">onSubmit</code>, call a method to validate. If input value doesn't pass the validation, return an error message and store it in the state. The error message then will be passed down to the InputField component.</p>
+<p>Create a state where you want to store error messages.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token operator">--</span>Registration<span class="token punctuation">.</span>js<span class="token operator">--</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">[</span>errors<span class="token punctuation">,</span> setErrors<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<br />
+<p><code class="language-text">onSubmit</code>, call <code class="language-text">handleSubmit</code> method.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">onSubmit</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleSubmit<span class="token punctuation">}</span></span><span class="token punctuation">></span></span></code></pre></div>
+<br />
+<p>Create <code class="language-text">handleSubmit</code> method</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">handleSubmit</span> <span class="token operator">=</span> <span class="token parameter">event</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> errors <span class="token operator">=</span> <span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">setError</span><span class="token punctuation">(</span>errors<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">)</span> <span class="token keyword">return</span>
+  <span class="token comment">// call server</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>In this method, we will</p>
+<ul>
+<li>Add <code class="language-text">preventDefault()</code> to prevent full page reload on click.</li>
+<li>Call <code class="language-text">validate()</code> which will check for an errors and return error messages if there's any.</li>
+<li>If <code class="language-text">validate()</code> returns a message, store it in the state.</li>
+<li>And <strong>do not</strong> proceed to the next step, which is calling the server for authentication.</li>
+</ul>
+<br />
+<p>Create <code class="language-text">validate()</code> method</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">validate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> errors <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>account<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    errors<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"name is required"</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>account<span class="token punctuation">.</span>username <span class="token operator">===</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    errors<span class="token punctuation">.</span>username <span class="token operator">=</span> <span class="token string">"username is required"</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>account<span class="token punctuation">.</span>password <span class="token operator">===</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    errors<span class="token punctuation">.</span>password <span class="token operator">=</span> <span class="token string">"password is required"</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> errors
+<span class="token punctuation">}</span></code></pre></div>
+<br />
+<p>Pass the error message to the InputField component</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">InputField</span></span>
+  <span class="token attr-name">error</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>errors<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span>
+  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span>
+  <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>account<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span>
+  <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Name<span class="token punctuation">"</span></span>
+  <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span>
+  <span class="token attr-name">handleChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span></code></pre></div>
+<p>This is how it's rendered on the screen.</p>
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; ">
+      <a class="gatsby-resp-image-link" href="/static/5d3d2ea7327ca98c08a170763c70672f/d9199/form_reg_errors.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 89.1891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAABgklEQVQ4y61Ty07CQBTtzxi/wES/wIXfw1ZCoks/RVYkbmBVjLa+FkRDoaiJwQjWtkCBUGbmeO9gsfiIoXWSk5nOvXPm3NO5RqPRQK1Wg23bsCwL9XodQRCAh1IK6w7DcRxUKhWUy2WYpolqtbpCuC6M327Kok4r9DwPz90upJQQQmjwOos6rXBOBDETsKqMZTJYBMNQ0ylUNIIcjaCGQyi6QCetqTKpylCTCUCEiCJgNGSJiYnZPAwHAzyRh73X11wlLz2ULJeIZOJhRtJVD30fispVYQgZBtCXpJL+woqHgjwUVLYcj4EJY4I8wwiCUHvoscqcT2fxl9Pd8R8e8vsT/T5E4EP4jDcI7poMkLqX6SFjNgPmcyCOF3MeD0+olwtuC6X7DooJ3DaKnTb2P+ZD2jtI7Wu47eV3qeOi0GriYhDCOHp8wOapiR37HFvW2Tds0/7ezRV2ry9/jDP47AZxHPdeYPSp3DtqPWccwYk+0UzNtxTXOV9iyzWd5Xg4j/EOk+1iDfFrv2gAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="form reg errors" title="form reg errors" src="/static/5d3d2ea7327ca98c08a170763c70672f/fcda8/form_reg_errors.png" srcset="/static/5d3d2ea7327ca98c08a170763c70672f/12f09/form_reg_errors.png 148w,
+/static/5d3d2ea7327ca98c08a170763c70672f/e4a3f/form_reg_errors.png 295w,
+/static/5d3d2ea7327ca98c08a170763c70672f/fcda8/form_reg_errors.png 590w,
+/static/5d3d2ea7327ca98c08a170763c70672f/efc66/form_reg_errors.png 885w,
+/static/5d3d2ea7327ca98c08a170763c70672f/d9199/form_reg_errors.png 960w" sizes="(max-width: 590px) 100vw, 590px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy">
+  </a>
+    </span>
+</div>
+<p>We can follow the same steps to create a login form.
+Now it's time to authenticate the data with the server. <a href="">link here</a></p></div></div></section></div></main><div class="footer__Container-s0a1iy-0 kNdFTp"><p>© 2020 Jinah Lee — I used Gatsby</p></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/simple-form-react/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-5b787d3730ec873bcf76.js"],"app":["/app-15711cc9c247110a3e49.js"],"component---src-pages-404-js":["/component---src-pages-404-js-e1510a385c15bc60cc83.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-0cfffc10fda271dce538.js"],"component---src-pages-blog-tsx":["/component---src-pages-blog-tsx-8a11485c8f59c8838fc0.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-7974a9f99c42d9d2a226.js"],"component---src-pages-projects-airbnb-tsx":["/component---src-pages-projects-airbnb-tsx-bbe8846af61a9dc1e4e7.js"],"component---src-pages-projects-airbnbapp-tsx":["/component---src-pages-projects-airbnbapp-tsx-d373983de9ab7b7f194c.js"],"component---src-pages-projects-rimowa-tsx":["/component---src-pages-projects-rimowa-tsx-f2de4444b889b047574e.js"],"component---src-pages-projects-tsx":["/component---src-pages-projects-tsx-d053ef4aedd58d3b8c29.js"],"component---src-pages-projects-uicomp-tsx":["/component---src-pages-projects-uicomp-tsx-476ba5a70aedb16d3b23.js"],"component---src-templates-blog-post-tsx":["/component---src-templates-blog-post-tsx-6dead82e52e659e5f61d.js"]};/*]]>*/</script><script src="/polyfill-5b787d3730ec873bcf76.js" nomodule=""></script><script src="/component---src-templates-blog-post-tsx-6dead82e52e659e5f61d.js" async=""></script><script src="/f61f20643a01c6a9f234f7e0d826d7bb7960cf70-7308d9092df04833f07d.js" async=""></script><script src="/commons-32074c982b80189af075.js" async=""></script><script src="/app-15711cc9c247110a3e49.js" async=""></script><script src="/framework-5a1b297d9adac74fe592.js" async=""></script><script src="/styles-1043fb1b9b9e69356781.js" async=""></script><script src="/webpack-runtime-32dd9ec2adb70a789fa1.js" async=""></script></body></html>

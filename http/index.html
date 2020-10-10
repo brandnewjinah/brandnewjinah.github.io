@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.334c15dd5927e694a5f2.css">code[class*=language-],pre[class*=language-]{background:none;font-family:monospace,Monaco,Andale Mono,Ubuntu Mono;font-size:.925em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.875;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f7f7f7}:not(pre)>code[class*=language-]{padding:.1em;white-space:normal;background:#edf2f7;color:#315659}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.24.67"/><title data-react-helmet="true">Basic HTTP authentication | Jinah Lee</title><meta data-react-helmet="true" name="description" content="In the previous section, I created a simple registration form that takes user input and validates for client-side errors. What to do next…"/><meta data-react-helmet="true" property="og:title" content="Basic HTTP authentication"/><meta data-react-helmet="true" property="og:description" content="In the previous section, I created a simple registration form that takes user input and validates for client-side errors. What to do next…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="Jinah Lee"/><meta data-react-helmet="true" name="twitter:title" content="Basic HTTP authentication"/><meta data-react-helmet="true" name="twitter:description" content="In the previous section, I created a simple registration form that takes user input and validates for client-side errors. What to do next…"/><link rel="icon" href="/favicon-32x32.png?v=489c7b550fd39bb995747c71d37deab1" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=489c7b550fd39bb995747c71d37deab1"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=489c7b550fd39bb995747c71d37deab1"/><style data-styled="" data-styled-version="5.2.0">.gqCTE{margin:0 auto;width:100%;}/*!sc*/
+@media (max-width:850px){.gqCTE{position:fixed;top:0;left:0;bottom:0;width:100%;height:100%;overflow:hidden;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0);}}/*!sc*/
+data-styled.g1[id="links__Container-gftenr-0"]{content:"gqCTE,"}/*!sc*/
+@media (max-width:850px){.crHvpQ{background-color:#fff;width:100%;height:200vh;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;z-index:1;-webkit-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;}}/*!sc*/
+data-styled.g2[id="links__Overlay-gftenr-1"]{content:"crHvpQ,"}/*!sc*/
+.cveFQU{list-style:none;text-align:right;}/*!sc*/
+.cveFQU li{float:none;display:inline-block;}/*!sc*/
+.cveFQU li:nth-child(-n + 2){float:left;margin-right:40px;}/*!sc*/
+.cveFQU li:nth-child(n + 3){margin-left:40px;}/*!sc*/
+@media (max-width:850px){.cveFQU{text-align:center;}.cveFQU li{float:none;display:block;}.cveFQU li:nth-child(-n + 2){float:none;margin:20px 0;}.cveFQU li:nth-child(n + 3){float:none;margin:20px 0;}}/*!sc*/
+data-styled.g3[id="links__Ul-gftenr-2"]{content:"cveFQU,"}/*!sc*/
+.cnMwin{font-size:0.875rem;font-weight:400;color:#8b8b8b;}/*!sc*/
+@media (max-width:850px){.cnMwin{font-size:1.25rem;}}/*!sc*/
+data-styled.g4[id="links__Menu-gftenr-3"]{content:"cnMwin,"}/*!sc*/
+.ezMgaq{width:25px;height:33px;position:absolute;top:0;right:2em;z-index:1;display:none;cursor:pointer;}/*!sc*/
+@media (max-width:850px){.ezMgaq{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;}}/*!sc*/
+.ezMgaq div{width:100%;height:2px;background-color:#000;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-transition:all 0.4s ease;transition:all 0.4s ease;opacity:1;}/*!sc*/
+.ezMgaq:before,.ezMgaq:after{content:"";position:absolute;z-index:1;width:100%;height:2px;background-color:black;-webkit-transition:all 0.4s ease;transition:all 0.4s ease;}/*!sc*/
+.ezMgaq:before{opacity:1;-webkit-transform:rotate(0) translateY(-6px);-ms-transform:rotate(0) translateY(-6px);transform:rotate(0) translateY(-6px);}/*!sc*/
+.ezMgaq:after{opacity:1;-webkit-transform:rotate(0) translateY(6px);-ms-transform:rotate(0) translateY(6px);transform:rotate(0) translateY(6px);}/*!sc*/
+data-styled.g5[id="burger__Container-sc-1r8ek56-0"]{content:"ezMgaq,"}/*!sc*/
+.jmUHyZ{width:100%;max-width:1024px;height:33px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;padding:0 2em;margin:0 auto;}/*!sc*/
+data-styled.g6[id="header__Container-bnmt84-0"]{content:"jmUHyZ,"}/*!sc*/
+.hEMvEM{position:absolute;left:50%;top:5px;content:"";width:200px;margin-left:-100px;}/*!sc*/
+.hEMvEM h6{text-transform:uppercase;font-weight:600;-webkit-letter-spacing:0.125rem;-moz-letter-spacing:0.125rem;-ms-letter-spacing:0.125rem;letter-spacing:0.125rem;text-align:center;}/*!sc*/
+data-styled.g7[id="header__Logo-bnmt84-1"]{content:"hEMvEM,"}/*!sc*/
+.kNdFTp{margin:2em auto 4em;padding:0 2em;max-width:1024px;color:#656565;}/*!sc*/
+.kNdFTp p{font-size:0.75rem;}/*!sc*/
+data-styled.g8[id="footer__Container-s0a1iy-0"]{content:"kNdFTp,"}/*!sc*/
+*{box-sizing:border-box;margin:0;padding:0;}/*!sc*/
+html{width:100%;height:100%;}/*!sc*/
+body{width:100%;height:100%;margin:0;padding:0;background-color:white;color:#3f3f3f;font-family:'Mulish',sans-serif;font-size:1.05rem;line-height:1.875rem;font-weight:400;}/*!sc*/
+h1{font-weight:600;font-size:3.25rem;line-height:2.375rem;}/*!sc*/
+h2{font-weight:500;font-size:2.4rem;line-height:3.4rem;}/*!sc*/
+h3{font-weight:500;font-size:2rem;line-height:3.5rem;}/*!sc*/
+h4{font-weight:500;font-size:1.5rem;line-height:3rem;}/*!sc*/
+h5{font-weight:500;font-size:1.35rem;line-height:1.5rem;}/*!sc*/
+h6{font-weight:400;font-size:1.25rem;line-height:2rem;}/*!sc*/
+ul{list-style-position:inside;text-indent:-20px;}/*!sc*/
+li{margin-left:20px;margin-right:20px;}/*!sc*/
+a{display:inline-block;-webkit-text-decoration:none;text-decoration:none;-webkit-text-decoration-skip-ink:auto;text-decoration-skip-ink:auto;color:inherit;cursor:pointer;-webkit-transition:opacity 0.2s ease-in-out;transition:opacity 0.2s ease-in-out;}/*!sc*/
+a:hover,a:focus{outline:0;opacity:0.5;}/*!sc*/
+code{font-size:1.125rem;background-color:#edf2f7;padding:0 .5rem;}/*!sc*/
+data-styled.g9[id="sc-global-hdaIDv1"]{content:"sc-global-hdaIDv1,"}/*!sc*/
+.iKNSvq{width:100%;min-height:100vh;padding-top:3vw;display:grid;grid-template-rows:auto 1fr auto;grid-template-columns:100%;}/*!sc*/
+data-styled.g10[id="layout__Container-sc-1jer9s0-0"]{content:"iKNSvq,"}/*!sc*/
+.iPHtdn{padding:5em 0;}/*!sc*/
+@media (max-width:850px){.iPHtdn{padding:2em 0;}}/*!sc*/
+data-styled.g11[id="layout__Main-sc-1jer9s0-1"]{content:"iPHtdn,"}/*!sc*/
+.edCOJk{max-width:1024px;padding:2em;margin:0 auto;}/*!sc*/
+data-styled.g63[id="blogPost__Container-sc-1edy2wl-0"]{content:"edCOJk,"}/*!sc*/
+.hRtoSO h4{margin:1.5em 0;color:#191919;}/*!sc*/
+.hRtoSO h5{margin:1.5em 0;color:#191919;}/*!sc*/
+.hRtoSO h6{font-weight:600;font-size:1.125rem;margin:1em 0;color:#191919;}/*!sc*/
+.hRtoSO ul{margin:1em 0 2em;}/*!sc*/
+.hRtoSO ol{margin:1em 0 2em;}/*!sc*/
+.hRtoSO a:hover img{opacity:1;}/*!sc*/
+.hRtoSO img{width:100%;height:auto;}/*!sc*/
+data-styled.g64[id="blogPost__Post-sc-1edy2wl-1"]{content:"hRtoSO,"}/*!sc*/
+.hlaFuJ{text-align:center;}/*!sc*/
+data-styled.g65[id="blogPost__Title-sc-1edy2wl-2"]{content:"hlaFuJ,"}/*!sc*/
+.IsotA{font-size:1rem;text-align:center;margin-bottom:4em;color:#656565;}/*!sc*/
+data-styled.g66[id="blogPost__Date-sc-1edy2wl-3"]{content:"IsotA,"}/*!sc*/
+</style><link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700|Mulish:300,400,500,600,700&amp;display=swap" rel="stylesheet"/><link as="script" rel="preload" href="/webpack-runtime-32dd9ec2adb70a789fa1.js"/><link as="script" rel="preload" href="/styles-1043fb1b9b9e69356781.js"/><link as="script" rel="preload" href="/framework-5a1b297d9adac74fe592.js"/><link as="script" rel="preload" href="/app-15711cc9c247110a3e49.js"/><link as="script" rel="preload" href="/commons-32074c982b80189af075.js"/><link as="script" rel="preload" href="/f61f20643a01c6a9f234f7e0d826d7bb7960cf70-7308d9092df04833f07d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-tsx-6dead82e52e659e5f61d.js"/><link as="fetch" rel="preload" href="/page-data/http/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3159585216.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/63159454.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="layout__Container-sc-1jer9s0-0 iKNSvq"><header class="header__Container-bnmt84-0 jmUHyZ"><a href="/"><div class="header__Logo-bnmt84-1 hEMvEM"><h6>Jinah Lee</h6></div></a><div class="burger__Container-sc-1r8ek56-0 ezMgaq"><div></div></div><header class="links__Container-gftenr-0 gqCTE"><div class="links__Overlay-gftenr-1 crHvpQ"><ul class="links__Ul-gftenr-2 cveFQU"><li><a href="/blog/"><div class="links__Menu-gftenr-3 cnMwin">Blog</div></a></li><li><a href="/projects/"><div class="links__Menu-gftenr-3 cnMwin">Projects</div></a></li><li><a href="/about/"><div class="links__Menu-gftenr-3 cnMwin">About</div></a></li><li><a href="https://github.com/brandnewjinah" target="_blank"><div class="links__Menu-gftenr-3 cnMwin">Github</div></a></li></ul></div></header></header><main class="layout__Main-sc-1jer9s0-1 iPHtdn"><div class="blogPost__Container-sc-1edy2wl-0 edCOJk"><section class="blogPost__Post-sc-1edy2wl-1 hRtoSO"><div><h3 class="blogPost__Title-sc-1edy2wl-2 hlaFuJ">Basic HTTP authentication</h3><p class="blogPost__Date-sc-1edy2wl-3 IsotA">08.07.2020</p><div><p>In the <a href="./building-a-simple-registration-and-login-form-in-react">previous section</a>, I created a simple registration form that takes user input and validates for client-side errors.</p>
+<h4>What to do next?</h4>
+<ol>
+<li>We need to send a HTTP request to the server to register a user in the database</li>
+<li>Server receives the data, and checks for any server side errors.</li>
+<li>Server tells us whether the request is accepted or rejected.</li>
+<li>Based on the server response, we need to redirect the user to the appropriate page.</li>
+</ol>
+<h6>1. Sending an HTTP request to the server</h6>
+<p>In this example, I'm going to use axios. Install <a href="https://www.npmjs.com/package/axios">axios</a></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm i axios</code></pre></div>
+<br />
+<p>Import axios in the Registration.js</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">"axios"</span></code></pre></div>
+<br />
+<p>Call the server onSubmit</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">handleSubmit</span> <span class="token operator">=</span> <span class="token parameter">event</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> errors <span class="token operator">=</span> <span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function">setErrors</span><span class="token punctuation">(</span>errors <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">)</span> <span class="token keyword">return</span>
+  <span class="token comment">//call server</span>
+  <span class="token function">postData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>In the <code class="language-text">handleSubmit</code> method, we need to call the server right after client-side validation passes. We will place the call separately inside the <code class="language-text">postData</code> method.</p>
+<br />
+<p>In the <code class="language-text">postData</code> method, first call the server</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">postData</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"http://localhost:3900/api/users"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>In order to ask the server to accept data, need to send a POST request. Here, I'm sending the request to the backend server that I set up with the node.js and mogodb.</p>
+<br />
+<p>But what are we asking the server to accept? The user input.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">postData</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> userData <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> account<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+    email<span class="token operator">:</span> account<span class="token punctuation">.</span>username<span class="token punctuation">,</span>
+    password<span class="token operator">:</span> account<span class="token punctuation">.</span>password<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+  axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"http://localhost:3900/api/users"</span><span class="token punctuation">,</span> userData<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>Include user input in the body of the request. The keys should match with the backend.</p>
+<br />
+<p>The request will return a promise. <a href="./glossary-things-i-must-know-as-a-front-end-developer">What's a promise?</a></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">postData</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> account<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+    email<span class="token operator">:</span> account<span class="token punctuation">.</span>username<span class="token punctuation">,</span>
+    password<span class="token operator">:</span> account<span class="token punctuation">.</span>password<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"http://localhost:3900/api/users"</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>We need to <code class="language-text">await</code> for the promise, and place the response in a const. Lastly, decorate the function with an async keyword.</p>
+<br />
+<p>Now test registering a user</p>
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; ">
+      <a class="gatsby-resp-image-link" href="/static/a17081e792d88e3aa8d423867219a203/906b5/createAccount.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 74.32432432432432%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAABUUlEQVQ4y62SzU6DQBDH90WML1BNn8H4UD6C3rTefAOSHnoDbn7RVtRzY6hSQAgEWz4aTBHp353VNDVKiq2T/Fgyk/nvzOwwz/MwGAzgui6GwyEcx4FhGPB9HxSzLAu2bYNsPp9jlTHTNKGqKjqdDtrtNjRNgyzLUBRFIEkSdF1fCK6CoabVqU5UGEWRaI+sLMtK6lQnKszzHGEYIk1TFEUhnH8RWIbyGH3G4zEmkwlIfB2hb4LT6RRBEAjR5Xmti2iZVobWg4RpphtVSHNLkkS0HMcxsizbTJDEaJlJ8F9afuMVBvyV6Sz4DcT7BtRe7LrG9CTGofmElm3h2Br94IRzymMte/RrnKDcI66hvoRgZ88Oti7P0exr2Oldo/GF+O9+nnt3Ovbvb7Hb0xa+xhJN7t++usCB8QDmzWbo8lXR+QvfVNCPI0FVnHJJ4/E1wweg623MGBIL+wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="createAccount" title="createAccount" src="/static/a17081e792d88e3aa8d423867219a203/fcda8/createAccount.png" srcset="/static/a17081e792d88e3aa8d423867219a203/12f09/createAccount.png 148w,
+/static/a17081e792d88e3aa8d423867219a203/e4a3f/createAccount.png 295w,
+/static/a17081e792d88e3aa8d423867219a203/fcda8/createAccount.png 590w,
+/static/a17081e792d88e3aa8d423867219a203/efc66/createAccount.png 885w,
+/static/a17081e792d88e3aa8d423867219a203/906b5/createAccount.png 950w" sizes="(max-width: 590px) 100vw, 590px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy">
+  </a>
+    </span>
+</div>
+<br />
+<p>Once Register button clicked, check the Network tab in the Chrome developer tool</p>
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; ">
+      <a class="gatsby-resp-image-link" href="/static/468d36e07f5fd76dbf4ee749b6d5ae99/f32b7/post_network.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 64.1891891891892%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACKklEQVQ4y31SSY4TQRDs1yG2Iz/gIzwAGHGYK1/gxhUJhAYhjUAgzdjt3qpXd3X16nYv3oLMsltYjExJoVKVsqIiI9KwHRdxnKCu6weoqgr3nsKXXxE+3ji4uZP4/MPD95nEp1sXX39H+Ha3pDuBW1Php13CyPMc84WlH282GwzDoDGOA9Zdj1cfCrx8n+PFdYZHr1M8f6fw9Eoe8Vbi8Zslnpz2Z1fZkdD1BCJSudtusT0Df7BaDzBtAdNyMTdtRIlCInNIVSHLa8Qpnwt9brsRhlI5/CCEJ3woIu+6Duv1Gqu2Rdf3RDoi8AV8z4OIXHipg5zeXFpGlikiC+C4HqmwMZubsGzyNVlqH8dxhPB9eNSF4zpIlUSel0iWEu26w4Y6GccNdbTD4YCjQg6G22aFJXlZ1w12u51uuSeVYRhScDF8Ii6LEnXTUG2BoiwJlX63WrVEeIBR0qWrf/fockWiD5ps8rGhx0wmpUQURWDP+76DUupU/3dpQi6+n821ypQecdr8Ce8MTjxJEgRBoHcmjaJYjxrbwSTnMGIqmpsL/Vtzmr1zMCGTWJZF4QXg+pZCuxjK1N5+v3/wG9+xj9wFKxRCQFKIBfnIqKoaDQlh3xl9P8DAfxaT6pSJiKchI9+WqdQzy0hlpqehpGBYlG75X1UTeLFCLmTvWCUTZjQVTDKRMYIw0in3wwWFE+GkkCdgQR66NNy2Q/O6sPXM+kQk/FATOq7Q8/sHobXOuEUA7YIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="post network" title="post network" src="/static/468d36e07f5fd76dbf4ee749b6d5ae99/fcda8/post_network.png" srcset="/static/468d36e07f5fd76dbf4ee749b6d5ae99/12f09/post_network.png 148w,
+/static/468d36e07f5fd76dbf4ee749b6d5ae99/e4a3f/post_network.png 295w,
+/static/468d36e07f5fd76dbf4ee749b6d5ae99/fcda8/post_network.png 590w,
+/static/468d36e07f5fd76dbf4ee749b6d5ae99/efc66/post_network.png 885w,
+/static/468d36e07f5fd76dbf4ee749b6d5ae99/f32b7/post_network.png 1136w" sizes="(max-width: 590px) 100vw, 590px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy">
+  </a>
+    </span>
+</div>
+Under users, Status code shows 200 OK. Successfully saved the user data in the server.
+<br />
+<p>It successfully shows up in the MongoDB as well</p>
+<div style="max-width:400px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.02); margin: 2em 0;">
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; ">
+      <a class="gatsby-resp-image-link" href="/static/0b4dab47a5bf632135cfca99a7342238/36eca/userMongo.png" style="display: block" target="_blank" rel="noopener">
+    <span class="gatsby-resp-image-background-image" style="padding-bottom: 16.89189189189189%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAfklEQVQI12WOWwrDMAwEc/9jpn8x9GE7lq2Ht5Lbj5IKBsQILbuJKtQMVDLsLJhnBuoTMyhOczfnH2aB/TChnrWZH8cYuO070j0jPSpKbejUIe6VGaIG/rJ2sRV6nQjeop2I4EgHaiMUErwao3ZZECtoiPtwjNY/e/zh0jrcG6Wj61U2TIDLAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="userMongo" title="userMongo" src="/static/0b4dab47a5bf632135cfca99a7342238/fcda8/userMongo.png" srcset="/static/0b4dab47a5bf632135cfca99a7342238/12f09/userMongo.png 148w,
+/static/0b4dab47a5bf632135cfca99a7342238/e4a3f/userMongo.png 295w,
+/static/0b4dab47a5bf632135cfca99a7342238/fcda8/userMongo.png 590w,
+/static/0b4dab47a5bf632135cfca99a7342238/efc66/userMongo.png 885w,
+/static/0b4dab47a5bf632135cfca99a7342238/c83ae/userMongo.png 1180w,
+/static/0b4dab47a5bf632135cfca99a7342238/36eca/userMongo.png 1526w" sizes="(max-width: 590px) 100vw, 590px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy">
+  </a>
+    </span>
+</div>
+<p>To be continued...</p></div></div></section></div></main><div class="footer__Container-s0a1iy-0 kNdFTp"><p>© 2020 Jinah Lee — I used Gatsby</p></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/http/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-5b787d3730ec873bcf76.js"],"app":["/app-15711cc9c247110a3e49.js"],"component---src-pages-404-js":["/component---src-pages-404-js-e1510a385c15bc60cc83.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-0cfffc10fda271dce538.js"],"component---src-pages-blog-tsx":["/component---src-pages-blog-tsx-8a11485c8f59c8838fc0.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-7974a9f99c42d9d2a226.js"],"component---src-pages-projects-airbnb-tsx":["/component---src-pages-projects-airbnb-tsx-bbe8846af61a9dc1e4e7.js"],"component---src-pages-projects-airbnbapp-tsx":["/component---src-pages-projects-airbnbapp-tsx-d373983de9ab7b7f194c.js"],"component---src-pages-projects-rimowa-tsx":["/component---src-pages-projects-rimowa-tsx-f2de4444b889b047574e.js"],"component---src-pages-projects-tsx":["/component---src-pages-projects-tsx-d053ef4aedd58d3b8c29.js"],"component---src-pages-projects-uicomp-tsx":["/component---src-pages-projects-uicomp-tsx-476ba5a70aedb16d3b23.js"],"component---src-templates-blog-post-tsx":["/component---src-templates-blog-post-tsx-6dead82e52e659e5f61d.js"]};/*]]>*/</script><script src="/polyfill-5b787d3730ec873bcf76.js" nomodule=""></script><script src="/component---src-templates-blog-post-tsx-6dead82e52e659e5f61d.js" async=""></script><script src="/f61f20643a01c6a9f234f7e0d826d7bb7960cf70-7308d9092df04833f07d.js" async=""></script><script src="/commons-32074c982b80189af075.js" async=""></script><script src="/app-15711cc9c247110a3e49.js" async=""></script><script src="/framework-5a1b297d9adac74fe592.js" async=""></script><script src="/styles-1043fb1b9b9e69356781.js" async=""></script><script src="/webpack-runtime-32dd9ec2adb70a789fa1.js" async=""></script></body></html>

@@ -58,11 +58,9 @@ const AirbnbApp = ({ data }) => {
         </Hero>
         <TextSection>
           <p>
-            RIMOWA ecommerce site clone project, as a part of the WeCode
-            bootcamp curriculum. I collaborated with 2 other front-end
-            developers and 2 back-end developers. I chose to clone this site
-            because I wanted to learn and implement practical ecommerce
-            practices.
+            Airbnb App clone project. After completing the Airbnb site clone, I
+            decided to clone the app using React Native. It was a solo project
+            completed in less than three weeks.
           </p>
         </TextSection>
 

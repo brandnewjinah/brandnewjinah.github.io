@@ -33,7 +33,7 @@ if (!password.match(/(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8}/)) {
 
 ##### Other uses
 
-From one of the [edabit](https://edabit.com/challenge/rvsvGvqZ3BzNieKqA) javascript challenges, a user `Euphonic Sounds` effectively used RegEx to solve a problem.
+From the [edabit](https://edabit.com/challenge/rvsvGvqZ3BzNieKqA) javascript challenges
 
 <h6 style="color: #565656">Question</h6>
 
@@ -54,3 +54,21 @@ const detectWord = str => {
 - `/[A-Z]/g` do a global search for uppercase characters
 - `replace` all uppercase characters with empty string " "
 - this leaves us with only lowercase characters
+
+<h6 style="color: #565656">Question</h6>
+
+How many D's are in a sentence?
+
+```bash
+countDs("My friend Dylan got distracted in school.") ➞ 4
+```
+
+<h6 style="color: #565656">Answer</h6>
+
+```javascript
+const countDs = str => {
+  str.match(/d/di).length
+}
+```
+
+- `/d/id` match character "d", case insensitive

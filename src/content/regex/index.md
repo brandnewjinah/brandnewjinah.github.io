@@ -67,7 +67,7 @@ countDs("My friend Dylan got distracted in school.") ➞ 4
 
 ```javascript
 const countDs = str => {
-  str.match(/d/di).length
+  str.match(/d/gi).length
 }
 ```
 

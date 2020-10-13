@@ -65,7 +65,8 @@ const Skills = [
   {
     id: 9,
     title: "Accessibility",
-    desc: "I have more than 10 years of experience in UX/UI design",
+    desc:
+      "I understand the importance of accessibility and I'm constantly learning",
   },
 ]
 

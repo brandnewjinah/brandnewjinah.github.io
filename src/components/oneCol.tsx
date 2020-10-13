@@ -37,7 +37,7 @@ const Center = styled.div`
 
   .overline {
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 600;
     letter-spacing: 0.105em;
   }
@@ -47,7 +47,7 @@ const Center = styled.div`
   }
 
   p {
-    font-size: 0.875rem;
+    font-size: 1 rem;
     line-height: 1.5rem;
   }
 `
@@ -58,7 +58,7 @@ const Left = styled.div`
 
   .overline {
     text-transform: uppercase;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 600;
     letter-spacing: 0.105em;
   }
@@ -68,7 +68,7 @@ const Left = styled.div`
   }
 
   p {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.5rem;
   }
 `

@@ -70,9 +70,9 @@ const BlogPosts = styled.div`
   padding: 1.875em 0;
 
   span {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    letter-spacing: 0.105em;
+    letter-spacing: 0.05em;
   }
 
   h4 {
@@ -80,7 +80,7 @@ const BlogPosts = styled.div`
   }
 
   p {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.5rem;
   }
 `

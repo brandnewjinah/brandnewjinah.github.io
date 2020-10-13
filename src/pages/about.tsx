@@ -37,7 +37,7 @@ const Skills = [
     id: 4,
     title: "React",
     desc:
-      "I love using hooks and creating reusable components with React. I understand the lifecycle",
+      "I can write functional components. I understand the lifecycle and virtual DOM",
   },
   {
     id: 5,
@@ -48,7 +48,8 @@ const Skills = [
   {
     id: 6,
     title: "Redux",
-    desc: "I like implementing with Ducks pattern for cleaner structure",
+    desc:
+      "I understand the Redux flow and I like implementing with Ducks pattern",
   },
   {
     id: 7,
@@ -59,6 +60,11 @@ const Skills = [
   {
     id: 8,
     title: "UX/UI Design",
+    desc: "I have more than 10 years of experience in UX/UI design",
+  },
+  {
+    id: 9,
+    title: "Accessibility",
     desc: "I have more than 10 years of experience in UX/UI design",
   },
 ]
@@ -76,10 +82,12 @@ const Projects = ({ data }) => {
         </p>
       </Container>
       <Section>
-        <div style={{paddingLeft: "2em"}}><h6>Skills</h6></div>
+        <div style={{ paddingLeft: "2em" }}>
+          <h6>Skills</h6>
+        </div>
         {Skills.map((item, index) =>
           index % 2 ? (
-            <Grid style={{ backgroundColor: "#fafafa", }}>
+            <Grid style={{ backgroundColor: "#fafafa" }}>
               <div>
                 <p>{item.title}</p>
               </div>
@@ -124,13 +132,12 @@ const Grid = styled.div`
   padding: 0.5em 0;
 
   div {
-  margin-left: 2em;
-  padding-right: 2em;
+    margin-left: 2em;
+    padding-right: 2em;
   }
 
   p {
-    font-size: 0.875rem;
-
+    font-size: 1rem;
   }
 
   @media (max-width: 850px) {

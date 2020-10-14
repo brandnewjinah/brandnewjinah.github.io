@@ -39,10 +39,13 @@ const UIComp = ({ data }) => {
 
         <TextSection>
           <p>
-            With my background in UX/UI design, I wanted to build customizable
-            UI components that are easy to implement and elegantly designed. The
-            list will keep growing and once I have enough components to share,
-            I'll figure out a way to distrubute them properly.
+            With my background in UX/UI design, I started building customizable
+            UI components that applied best UX practices and also designed
+            elegantly. One problem I had with some of the existing UI components
+            was a lot of them looked a bit generic and seemed hard to fit into
+            certain brands. I'm constantly building so once I have enough
+            components to share, I'll figure out a way to distrubute them
+            properly.
           </p>
         </TextSection>
 

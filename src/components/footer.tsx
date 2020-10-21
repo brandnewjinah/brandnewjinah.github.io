@@ -7,7 +7,7 @@ import colors from "./colors"
 const Footer = () => {
   return (
     <Container>
-      <p>© 2020 Jinah Lee — I used Gatsby</p>
+      <p>© 2020 Jinah Lee — I built it with Gatsby from scratch</p>
     </Container>
   )
 }

@@ -24,6 +24,11 @@ Just like a promise in real life, it commits to do something. When we send an HT
 
 <h5 style="color: #214bce; font-weight: 700;">R</h5>
 
+###### React Hooks
+
+- <code>useLayoutEffect</code><br>
+  Runs synchronously after a render but before the screen is updated. React starts to render, <code>useLayoutEffect</code> runs, an when it's done, then the screen is updated. Usually when you need to perform measurements.
+
 ###### Regular Expression
 
 Patterns used to match or locate character combinations in strings<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank"> [MDN].</a> It's commonly used to validate input value. For example, <code>/(?=._\d)(?=._[a-z])(?=._[A-Z])(?=._[!@#$%^&*]).{8}/</code>this pattern sees if a string matches any one number<code>\d</code>, a lowercase character<code>[a-z]</code>, an uppercase character<code>[A-Z]</code>, a special character<code>[!@#$%^&*]</code> and at least 8 characters<code>{8}</code>.

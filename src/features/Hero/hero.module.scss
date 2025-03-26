@@ -1,0 +1,139 @@
+.hero {
+    width: 100%;
+    max-width: 740px;
+    padding: 2rem 0 6rem;
+    margin: 0 auto;
+
+    @media (min-width: 744px) {
+        padding: 2rem 0 8rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 6rem 0 10rem;
+    }
+
+    @media (min-width: 1280px) {
+        max-width: 880px;
+        padding: 10rem 0;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+    }
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    flex: 1;
+    order: 2;
+    color: #1a3244;
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+
+    @media (min-width: 1024px) {
+        order: 1;
+    }
+
+    @media (min-width: 1280px) {
+        margin: 0;
+    }
+}
+
+h1 {
+    text-align: center;
+
+    @media (min-width: 1024px) {
+        text-align: left;
+    }
+}
+
+.heroTitle {
+    display: flex;
+    flex-direction: column;
+}
+
+.break {
+    display: inline-block;
+}
+
+.description {
+    font-family: "Bitter", serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+
+    @media (min-width: 1024px) {
+        text-align: left;
+    }
+}
+
+.highlight {
+    font-weight: 700;
+    font-style: normal;
+}
+
+.imageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    order: 1;
+
+    @media (min-width: 1024px) {
+        flex: 0 1 auto;
+        order: 2;
+        justify-content: flex-end;
+    }
+}
+
+.image {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        padding-bottom: 100%;
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: auto;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    @media (min-width: 744px) {
+        width: 240px;
+        height: 240px;
+    }
+
+    @media (min-width: 1024px) {
+        width: 260px;
+        height: 260px;
+    }
+
+    @media (min-width: 1280px) {
+        width: 300px;
+        height: 300px;
+    }
+}

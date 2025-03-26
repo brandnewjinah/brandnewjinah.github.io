@@ -1,0 +1,38 @@
+.back {
+    margin-bottom: 4rem;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 100%;
+    padding: 0.5rem;
+    border: 1px solid #dedede;
+    outline: transparent;
+    transition: opacity 0.3s ease-out;
+    cursor: pointer;
+}
+
+.subheader {
+    width: 85%;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.main {
+    margin: 4rem 0;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

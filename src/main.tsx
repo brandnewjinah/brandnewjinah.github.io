@@ -5,6 +5,12 @@ import { router } from "./routes/router";
 
 import "./index.scss";
 
+if (sessionStorage.redirect) {
+    const redirectTo = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    window.history.replaceState(null, "", redirectTo);
+}
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <RouterProvider router={router} />

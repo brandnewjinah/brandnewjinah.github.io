@@ -227,7 +227,7 @@ export const projects = [
                 description: [
                     {
                         id: 1,
-                        text: "I led the UX/UI design for the **EZ Texting Mobile App**, ㅅo make it easy for business owners to manage customer messaging on the go. I worked from early problem definition through final UI design, creating an experience that felt intuitive and responsive. Users could quickly send and receive messages, manage contacts, and keep their SMS campaigns running smoothly—right from their phones.",
+                        text: "I led the UX/UI design for the **EZ Texting Mobile App**, To make it easy for business owners to manage customer messaging on the go. I worked from early problem definition through final UI design, creating an experience that felt intuitive and responsive. Users could quickly send and receive messages, manage contacts, and keep their SMS campaigns running smoothly—right from their phones.",
                     },
                 ],
             },
